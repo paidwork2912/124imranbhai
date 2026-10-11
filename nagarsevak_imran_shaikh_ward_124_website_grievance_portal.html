@@ -1,0 +1,1284 @@
+
+<!DOCTYPE html>
+<html lang="mr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>नगरसेवक इमरान शेख | Ward 124 - Vikhroli Parksite</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        saffron: {
+                            50: '#fff8f0',
+                            100: '#feefdb',
+                            500: '#ff8c00',
+                            600: '#e67300',
+                            700: '#cc5a00',
+                        },
+                        marathiGold: '#f1c40f',
+                        royalNavy: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans Devanagari', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for Devanagari & English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #f39c12 0%, #f1c40f 50%, #e67e22 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg-dark {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.85) 100%), url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        }
+        .hero-bg-light {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(248, 250, 252, 0.88) 100%), url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        }
+        /* Before & After Slider Style */
+        .before-after-container {
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+        .before-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            overflow: hidden;
+            z-index: 10;
+        }
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: #f1c40f;
+            z-index: 20;
+            cursor: ew-resize;
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #ff8c00;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff8c00;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- Language Selection Gate Modal (Shows on First Visit / Controlled via JS) -->
+    <div id="languageGateModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md transition-opacity duration-300">
+        <div class="bg-slate-800 border border-saffron-500/30 rounded-2xl p-6 sm:p-8 max-w-lg w-11/12 text-center shadow-2xl relative overflow-hidden">
+            <!-- Decorative Accent Background -->
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-saffron-500/20 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-amber-500/20 rounded-full blur-2xl"></div>
+
+            <div class="w-16 h-16 bg-gradient-to-tr from-saffron-500 to-amber-400 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-900 font-bold text-2xl shadow-lg shadow-saffron-500/30">
+                <i class="fa-solid font-bold">124</i>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-1">नमस्कार / Welcome</h2>
+            <p class="text-saffron-500 font-semibold text-lg mb-4">प्रभाग क्रमांक १२४, विक्रोळी पार्कसाईट</p>
+            <p class="text-slate-300 text-sm mb-6">कृपया वेबसाईट पाहण्यासाठी तुमची सोयीची भाषा निवडा.<br>Please select your preferred language to proceed.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button onclick="selectInitialLanguage('mr')" class="group relative overflow-hidden bg-gradient-to-r from-saffron-600 to-amber-600 hover:from-saffron-500 hover:to-amber-500 text-white font-bold py-4 px-6 rounded-xl shadow-lg transform transition active:scale-95 flex flex-col items-center justify-center gap-1 border border-saffron-400/40">
+                    <span class="text-xl">मराठी</span>
+                    <span class="text-xs text-amber-200 font-normal">मराठीत पुढे जा</span>
+                </button>
+                <button onclick="selectInitialLanguage('en')" class="group relative overflow-hidden bg-slate-700 hover:bg-slate-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transform transition active:scale-95 flex flex-col items-center justify-center gap-1 border border-slate-500/40">
+                    <span class="text-xl">English</span>
+                    <span class="text-xs text-slate-300 font-normal">Continue in English</span>
+                </button>
+            </div>
+            <p class="text-xs text-slate-400 mt-6">तुम्ही ही भाषा नंतरही वरच्या मेनूमधून बदलू शकता. / You can change this anytime later from the top header.</p>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-slate-900/90 dark:bg-slate-900/90 light:bg-white/90 backdrop-blur-md border-b border-slate-800 dark:border-slate-800 light:border-slate-200 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Logo -->
+                <a href="#home" class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-saffron-600 via-amber-500 to-yellow-400 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-saffron-500/20">
+                        IS
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-extrabold text-base sm:text-lg text-white dark:text-white light:text-slate-900 leading-tight tracking-tight" data-i18n="headerTitle">इमरान शेख</span>
+                            <span class="bg-saffron-500/20 text-saffron-500 text-[10px] font-bold px-2 py-0.5 rounded border border-saffron-500/30">WARD 124</span>
+                        </div>
+                        <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600" data-i18n="headerSubtitle">नगरसेवक - विक्रोळी पार्कसाईट</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+                    <a href="#home" class="hover:text-saffron-500 transition-colors py-1" data-i18n="navHome">मुख्यपृष्ठ</a>
+                    <a href="#about" class="hover:text-saffron-500 transition-colors py-1" data-i18n="navAbout">परिचय</a>
+                    <a href="#work" class="hover:text-saffron-500 transition-colors py-1" data-i18n="navWork">विकास कामे</a>
+                    <a href="#news" class="hover:text-saffron-500 transition-colors py-1" data-i18n="navNews">बातम्या व लेख</a>
+                    <a href="#grievance" class="hover:text-saffron-500 transition-colors py-1 text-saffron-400 font-semibold" data-i18n="navGrievance">तक्रार निवारण</a>
+                    <a href="#contact" class="hover:text-saffron-500 transition-colors py-1" data-i18n="navContact">संपर्क</a>
+                </nav>
+
+                <!-- Actions: Admin Link, Language Switcher, Theme Toggle -->
+                <div class="flex items-center gap-3">
+                    <!-- Staff Portal Button -->
+                    <button onclick="toggleAdminModal()" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 light:bg-slate-100 light:hover:bg-slate-200 border border-slate-700 dark:border-slate-700 light:border-slate-300 text-slate-300 dark:text-slate-300 light:text-slate-700 transition">
+                        <i class="fa-solid fa-user-shield text-saffron-500"></i>
+                        <span data-i18n="adminPortalBtn">कर्मचारी पोर्टल</span>
+                    </button>
+
+                    <!-- Language Selector Button -->
+                    <button onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-saffron-500/10 text-saffron-500 border border-saffron-500/30 hover:bg-saffron-500 hover:text-slate-950 transition-all">
+                        <i class="fa-solid fa-globe"></i>
+                        <span id="currentLangLabel">मराठी</span>
+                    </button>
+
+                    <!-- Theme Toggle Button -->
+                    <button id="themeToggleBtn" onclick="toggleTheme()" class="w-9 h-9 rounded-lg flex items-center justify-center bg-slate-800 dark:bg-slate-800 light:bg-slate-200 text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-saffron-500 transition">
+                        <i class="fa-solid fa-moon dark:inline light:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:hidden light:inline"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="lg:hidden w-9 h-9 rounded-lg flex items-center justify-center bg-slate-800 dark:bg-slate-800 light:bg-slate-200 text-slate-300">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium border-b border-slate-800" data-i18n="navHome">मुख्यपृष्ठ</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium border-b border-slate-800" data-i18n="navAbout">परिचय</a>
+            <a href="#work" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium border-b border-slate-800" data-i18n="navWork">विकास कामे</a>
+            <a href="#news" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium border-b border-slate-800" data-i18n="navNews">बातम्या व लेख</a>
+            <a href="#grievance" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium border-b border-slate-800 text-saffron-400" data-i18n="navGrievance">तक्रार निवारण केंद्र</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium border-b border-slate-800" data-i18n="navContact">संपर्क</a>
+            <button onclick="toggleAdminModal(); toggleMobileMenu();" class="w-full mt-2 py-2 px-4 rounded-lg bg-slate-800 text-sm font-semibold flex items-center justify-center gap-2">
+                <i class="fa-solid fa-user-shield text-saffron-500"></i>
+                <span data-i18n="adminPortalBtn">कार्यालयीन कर्मचारी लॉगिन</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative py-12 md:py-20 overflow-hidden border-b border-slate-800 hero-bg-dark transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Left Banner Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-saffron-500/10 border border-saffron-500/30 text-saffron-400 font-semibold text-xs sm:text-sm">
+                        <i class="fa-solid fa-award"></i>
+                        <span data-i18n="heroBadge">आपला लोकप्रतिनिधी | प्रभाग क्र. १२४ विक्रोळी पार्कसाईट</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white">
+                        <span data-i18n="heroName">नगरसेवक इमरान शेख</span>
+                        <span class="block gold-gradient-text mt-1" data-i18n="heroSlogan">"जनसेवा हीच आमची ईश्वरसेवा"</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed" data-i18n="heroDesc">
+                        विक्रोळी पार्कसाईट क्षेत्राच्या सर्वांगीण विकासासाठी, उत्तम रस्ते, स्वच्छ पाणी, अत्याधुनिक गटारे व नागरिकांच्या तत्पर सेवेसाठी सदैव कटिबद्ध.
+                    </p>
+
+                    <!-- Quick CTA Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#grievance" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-saffron-600 to-amber-600 hover:from-saffron-500 hover:to-amber-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-saffron-600/30 transform hover:-translate-y-0.5 transition flex items-center gap-2">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span data-i18n="btnFileComplaint">ऑनलाइन तक्रार नोंदवा</span>
+                        </a>
+                        <a href="#work" class="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm sm:text-base border border-slate-700 hover:border-saffron-500/50 transition flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-saffron-400"></i>
+                            <span data-i18n="btnViewWork">विकास कामे पहा</span>
+                        </a>
+                        <a href="#contact" class="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm sm:text-base border border-slate-700 transition flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-emerald-400"></i>
+                            <span data-i18n="btnContact">संपर्क साधा</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Leader Image Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm sm:max-w-md">
+                        <!-- Background Glow Aura -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-saffron-500/30 to-amber-500/20 rounded-3xl blur-2xl"></div>
+                        
+                        <div class="relative rounded-3xl bg-slate-800/80 border border-saffron-500/30 p-4 shadow-2xl overflow-hidden backdrop-blur-sm">
+                            <img src="image.png" alt="Nagarsevak Imran Shaikh" class="w-full h-80 sm:h-96 object-cover object-top rounded-2xl filter contrast-105">
+                            
+                            <div class="mt-4 p-3 bg-slate-900/90 rounded-xl border border-slate-700/60 text-center">
+                                <h3 class="font-extrabold text-lg text-white">इमरान शेख (Imran Shaikh)</h3>
+                                <p class="text-xs text-saffron-400 font-semibold" data-i18n="cardRole">नगरसेवक - प्रभाग १२४, महापालिका मुंबई</p>
+                                <p class="text-[11px] text-slate-400 mt-1" data-i18n="cardArea">पार्कसाईट, वर्षा नगर, चिराग नगर, पार्कसाईट सेक्टर १ ते ४</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ward Stats Counter Bar -->
+            <div class="mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 text-center shadow-lg">
+                    <p class="text-2xl sm:text-4xl font-extrabold text-saffron-400">₹२५+ कोटी</p>
+                    <p class="text-xs sm:text-sm text-slate-300 font-medium mt-1" data-i18n="statFunds">विकास निधी मंजूर</p>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 text-center shadow-lg">
+                    <p class="text-2xl sm:text-4xl font-extrabold text-amber-400">१८०+</p>
+                    <p class="text-xs sm:text-sm text-slate-300 font-medium mt-1" data-i18n="statProjects">पूर्ण झालेले प्रकल्प</p>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 text-center shadow-lg">
+                    <p class="text-2xl sm:text-4xl font-extrabold text-emerald-400">१२,०००+</p>
+                    <p class="text-xs sm:text-sm text-slate-300 font-medium mt-1" data-i18n="statCitizens">नागरिकांना मदत</p>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 text-center shadow-lg">
+                    <p class="text-2xl sm:text-4xl font-extrabold text-cyan-400">२४/७</p>
+                    <p class="text-xs sm:text-sm text-slate-300 font-medium mt-1" data-i18n="statHelp">जनसंपर्क कार्यालय सेवा</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-slate-900/60 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-saffron-500" data-i18n="aboutSub">नेत्याचा परिचय</h2>
+                <p class="text-2xl sm:text-4xl font-extrabold text-white mt-1" data-i18n="aboutTitle">विक्रोळी पार्कसाईटच्या प्रगतीचा ध्यास</p>
+                <div class="w-16 h-1 bg-saffron-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-6 space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                    <p data-i18n="aboutP1">
+                        नगरसेवक इमरान शेख हे गेल्या अनेक वर्षांपासून विक्रोळी पार्कसाईट (प्रभाग १२४) मधील नागरिकांच्या मूलभूत प्रश्नांसाठी सातत्याने लढत आहेत. पाणीपुरवठा सुधारणे, नवीन सांडपाणी वाहिन्या टाकणे, रस्त्यांचे काँक्रिटीकरण आणि स्थानिक तरुणांच्या रोजगारासाठी त्यांनी मोठे योगदान दिले आहे.
+                    </p>
+                    <p data-i18n="aboutP2">
+                        प्रभाग १२४ च्या प्रत्येक गल्लीबोळात थेट जाऊन नागरिकांच्या समस्या ऐकणे आणि त्या पालिकेच्या अधिकार्‍यांच्या माध्यमातून त्वरित सोडवणे ही त्यांची कामाची पद्धत आहे. 
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700">
+                            <i class="fa-solid fa-droplet text-cyan-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-sm" data-i18n="focus1Title">स्वच्छ पाणी पुरवठा</h4>
+                                <p class="text-xs text-slate-400" data-i18n="focus1Desc">डोंगरभागात हाय-प्रेशर पाणी लाईन</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700">
+                            <i class="fa-solid fa-road text-amber-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-sm" data-i18n="focus2Title">पक्के रस्ते व पेव्हर ब्लॉक</h4>
+                                <p class="text-xs text-slate-400" data-i18n="focus2Desc">सर्व गल्ल्यांमध्ये अंतर्गत रस्ते</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700">
+                            <i class="fa-solid fa-lightbulb text-yellow-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-sm" data-i18n="focus3Title">एलईडी स्ट्रीटलाईट्स</h4>
+                                <p class="text-xs text-slate-400" data-i18n="focus3Desc">महिला व नागरिकांच्या सुरक्षेसाठी प्रकाश</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700">
+                            <i class="fa-solid fa-notes-medical text-emerald-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-sm" data-i18n="focus4Title">मोफत आरोग्य शिबिरे</h4>
+                                <p class="text-xs text-slate-400" data-i18n="focus4Desc">दरमहा वैद्यकीय व नेत्र तपासणी</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-2xl p-6 shadow-xl relative">
+                        <h3 class="text-xl font-extrabold text-saffron-400 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-bullhorn"></i>
+                            <span data-i18n="visionTitle">आमचा जाहीरनामा व ध्येय</span>
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-saffron-500 mt-1"></i>
+                                <span data-i18n="vision1">पार्कसाईट परिसरातील सर्व डोंगराळ भागात पायऱ्या व संरक्षक भिंतींची पुनर्बांधणी.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-saffron-500 mt-1"></i>
+                                <span data-i18n="vision2">नवीन अभ्यासिका (Study Center) व तरुणांसाठी ई-लायब्ररीची उभारणी.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-saffron-500 mt-1"></i>
+                                <span data-i18n="vision3">दररोज कचरा व्यवस्थापन आणि साचलेल्या नाल्यांची वेळेत स्वच्छता.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-saffron-500 mt-1"></i>
+                                <span data-i18n="vision4">ज्येष्ठ नागरिक व महिलांसाठी विशेष कल्याणकारी योजना व आरोग्य कार्ड वितरण.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Showcase Section (With Interactive Before/After Gallery) -->
+    <section id="work" class="py-16 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-saffron-500" data-i18n="workSub">प्रत्यक्ष काम, खरी प्रगती</h2>
+                <p class="text-2xl sm:text-4xl font-extrabold text-white mt-1" data-i18n="workTitle">प्रभाग १२४ मधील विकास कामे</p>
+                <p class="text-sm text-slate-400 mt-2" data-i18n="workDesc">खालील फोटोवर स्लायडर फिरवून कामांमधील फरक (पूर्वी आणि नंतर) तपासा.</p>
+                <div class="w-16 h-1 bg-saffron-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button onclick="filterWork('all')" class="work-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-saffron-500 text-slate-950 shadow" data-i18n="filterAll">सर्व कामे</button>
+                <button onclick="filterWork('water')" class="work-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-i18n="filterWater">पाणी व सांडपाणी</button>
+                <button onclick="filterWork('roads')" class="work-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-i18n="filterRoads">रस्ते व गटारे</button>
+                <button onclick="filterWork('safety')" class="work-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-i18n="filterSafety">लाइट्स व सुरक्षा</button>
+            </div>
+
+            <!-- Before & After Comparison Component Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project Card 1 -->
+                <div class="work-card water bg-slate-800 rounded-2xl border border-slate-700/80 overflow-hidden shadow-xl">
+                    <div class="p-4 bg-slate-900 border-b border-slate-700/60 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" data-i18n="statusCompleted">पूर्ण झाले (COMPLETED)</span>
+                            <h3 class="font-bold text-base text-white mt-1" data-i18n="proj1Title">पार्कसाईट सेक्टर १ - नवीन पाणी लाईन व ड्रेनेज काम</h3>
+                        </div>
+                        <span class="text-xs text-slate-400"><i class="fa-solid fa-location-dot text-saffron-500"></i> पार्कसाईट</span>
+                    </div>
+
+                    <!-- Interactive Before/After Image Slider -->
+                    <div class="before-after-container h-64 sm:h-72 w-full" id="slider1">
+                        <!-- After Image (Background) -->
+                        <img src="https://images.unsplash.com/photo-1584467735871-8e85353a8413?auto=format&fit=crop&w=800&q=80" alt="After Work" class="absolute inset-0 w-full h-full object-cover">
+                        <span class="absolute bottom-3 right-3 z-0 bg-slate-900/80 text-emerald-400 font-bold text-xs px-2.5 py-1 rounded border border-emerald-500/40" data-i18n="labelAfter">नंतर (AFTER)</span>
+
+                        <!-- Before Image (Clipped Overlay) -->
+                        <div class="before-image">
+                            <img src="https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?auto=format&fit=crop&w=800&q=80" alt="Before Work" class="absolute inset-0 w-full h-full object-cover max-w-none" style="width: 100%;">
+                            <span class="absolute bottom-3 left-3 bg-slate-900/80 text-rose-400 font-bold text-xs px-2.5 py-1 rounded border border-rose-500/40" data-i18n="labelBefore">पूर्वी (BEFORE)</span>
+                        </div>
+
+                        <!-- Draggable Slider Handle Bar -->
+                        <div class="slider-handle">
+                            <div class="slider-button">
+                                <i class="fa-solid fa-left-right text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 text-xs text-slate-300">
+                        <p data-i18n="proj1Desc">पार्कसाईट सेक्टर १ मधील जुनी गळती असणारी लाईन बदलून ९ इंच नवीन ड्रेनेज व पाणी लाईन यशस्वीरीत्या पूर्ण.</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="work-card roads bg-slate-800 rounded-2xl border border-slate-700/80 overflow-hidden shadow-xl">
+                    <div class="p-4 bg-slate-900 border-b border-slate-700/60 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" data-i18n="statusCompleted">पूर्ण झाले (COMPLETED)</span>
+                            <h3 class="font-bold text-base text-white mt-1" data-i18n="proj2Title">चिराग नगर - काँक्रिट रस्ता व पेव्हर ब्लॉक काम</h3>
+                        </div>
+                        <span class="text-xs text-slate-400"><i class="fa-solid fa-location-dot text-saffron-500"></i> चिराग नगर</span>
+                    </div>
+
+                    <!-- Interactive Before/After Image Slider -->
+                    <div class="before-after-container h-64 sm:h-72 w-full" id="slider2">
+                        <img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?auto=format&fit=crop&w=800&q=80" alt="After Work" class="absolute inset-0 w-full h-full object-cover">
+                        <span class="absolute bottom-3 right-3 z-0 bg-slate-900/80 text-emerald-400 font-bold text-xs px-2.5 py-1 rounded border border-emerald-500/40" data-i18n="labelAfter">नंतर (AFTER)</span>
+
+                        <div class="before-image">
+                            <img src="https://images.unsplash.com/photo-1578991624414-276ef23a534f?auto=format&fit=crop&w=800&q=80" alt="Before Work" class="absolute inset-0 w-full h-full object-cover max-w-none" style="width: 100%;">
+                            <span class="absolute bottom-3 left-3 bg-slate-900/80 text-rose-400 font-bold text-xs px-2.5 py-1 rounded border border-rose-500/40" data-i18n="labelBefore">पूर्वी (BEFORE)</span>
+                        </div>
+
+                        <div class="slider-handle">
+                            <div class="slider-button">
+                                <i class="fa-solid fa-left-right text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 text-xs text-slate-300">
+                        <p data-i18n="proj2Desc">खराब झालेल्या रस्त्याची दुरुस्ती करून मजबूत काँक्रिटीकरण व पादचाऱ्यांसाठी पेव्हर ब्लॉक बसवले.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles, Press Clippings & Media Section -->
+    <section id="news" class="py-16 bg-slate-900/80 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-saffron-500" data-i18n="newsSub">वृत्तपत्रे व माध्यमे</h2>
+                <p class="text-2xl sm:text-4xl font-extrabold text-white mt-1" data-i18n="newsTitle">बातम्या, लेख व प्रसारमाध्यमे</p>
+                <div class="w-16 h-1 bg-saffron-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Article Card 1 -->
+                <div onclick="openArticleModal(1)" class="cursor-pointer group bg-slate-800 rounded-2xl border border-slate-700/80 overflow-hidden hover:border-saffron-500/50 transition-all shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <span class="absolute top-3 left-3 bg-saffron-500 text-slate-950 font-bold text-[10px] px-2 py-0.5 rounded">लोकमत वृत्त</span>
+                        </div>
+                        <div class="p-5">
+                            <p class="text-xs text-slate-400 mb-1"><i class="fa-regular fa-calendar-days mr-1"></i> १२ मे २०२६</p>
+                            <h3 class="font-bold text-base text-white group-hover:text-saffron-400 transition" data-i18n="art1Title">विक्रोळी पार्कसाईट येथे भव्य आरोग्य व मोफत नेत्र तपासणी शिबिर संपन्न</h3>
+                            <p class="text-xs text-slate-300 mt-2 line-clamp-2" data-i18n="art1Summary">नगरसेवक इमरान शेख यांच्या पुढाकाराने १२०० हून अधिक नागरिकांनी मोफत वैद्यकीय शिबिराचा लाभ घेतला...</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 text-xs font-bold text-saffron-400 flex items-center gap-1">
+                        <span data-i18n="readMore">पूर्ण बातमी वाचा</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </div>
+
+                <!-- Article Card 2 -->
+                <div onclick="openArticleModal(2)" class="cursor-pointer group bg-slate-800 rounded-2xl border border-slate-700/80 overflow-hidden hover:border-saffron-500/50 transition-all shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=600&q=80" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-slate-950 font-bold text-[10px] px-2 py-0.5 rounded">महाराष्ट्र टाईम्स</span>
+                        </div>
+                        <div class="p-5">
+                            <p class="text-xs text-slate-400 mb-1"><i class="fa-regular fa-calendar-days mr-1"></i> ०४ एप्रिल २०२६</p>
+                            <h3 class="font-bold text-base text-white group-hover:text-saffron-400 transition" data-i18n="art2Title">पार्कसाईट Hill No. 3 मधील नवीन पाणी लाईन कामाचे लोकार्पण</h3>
+                            <p class="text-xs text-slate-300 mt-2 line-clamp-2" data-i18n="art2Summary">गेल्या २० वर्षांपासूनचा पाण्याच्या दाबाचा प्रश्न नगरसेवक इमरान शेख यांच्या प्रयत्नाने सुटला...</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 text-xs font-bold text-saffron-400 flex items-center gap-1">
+                        <span data-i18n="readMore">पूर्ण बातमी वाचा</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </div>
+
+                <!-- Article Card 3 -->
+                <div onclick="openArticleModal(3)" class="cursor-pointer group bg-slate-800 rounded-2xl border border-slate-700/80 overflow-hidden hover:border-saffron-500/50 transition-all shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?auto=format&fit=crop&w=600&q=80" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <span class="absolute top-3 left-3 bg-cyan-500 text-slate-950 font-bold text-[10px] px-2 py-0.5 rounded">सकाळ बातमी पत्र</span>
+                        </div>
+                        <div class="p-5">
+                            <p class="text-xs text-slate-400 mb-1"><i class="fa-regular fa-calendar-days mr-1"></i> १८ मार्च २०२६</p>
+                            <h3 class="font-bold text-base text-white group-hover:text-saffron-400 transition" data-i18n="art3Title">तरुणांसाठी भव्य रोजगार मेळावा व ई-लायब्ररी उपक्रम</h3>
+                            <p class="text-xs text-slate-300 mt-2 line-clamp-2" data-i18n="art3Summary">प्रभाग १२४ मधील २५० हून अधिक स्थानिक तरुणांना विविध कंपन्यांमध्ये रोजगाराच्या संधी उपलब्ध...</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 text-xs font-bold text-saffron-400 flex items-center gap-1">
+                        <span data-i18n="readMore">पूर्ण बातमी वाचा</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Article Pop-up Modal -->
+    <div id="articleModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
+            <button onclick="closeArticleModal()" class="absolute top-4 right-4 w-9 h-9 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center text-white">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="articleModalContent" class="space-y-4">
+                <!-- Content Injected Dynamically via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Citizen Complaint & Grievance Redressal Portal Section -->
+    <section id="grievance" class="py-16 border-b border-slate-800 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-saffron-500/10 text-saffron-400 text-xs font-bold mb-2">
+                    <i class="fa-solid fa-shield-halved"></i> नागरिक तक्रार केंद्र
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white" data-i18n="grievanceTitle">जनता तक्रार निवारण पोर्टल</h2>
+                <p class="text-sm text-slate-300 mt-2" data-i18n="grievanceSub">प्रभाग १२४ मधील तुमची कोणतीही समस्या थेट नगरसेवक कार्यालयाकडे नोंदवा. तुम्हाला एक युनिक ट्रॅकिंग आयडी मिळेल.</p>
+                <div class="w-16 h-1 bg-saffron-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Complaint Form Card (Col 7) -->
+                <div class="lg:col-span-7 bg-slate-800/90 border border-slate-700/90 rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+                    <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2 border-b border-slate-700 pb-3">
+                        <i class="fa-solid fa-file-signature text-saffron-500"></i>
+                        <span data-i18n="formHeading">नवीन तक्रार नोंदवा (Register Complaint)</span>
+                    </h3>
+
+                    <form id="grievanceForm" onsubmit="handleComplaintSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Full Name -->
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="lblFullName">पूर्ण नाव *</label>
+                                <input type="text" required placeholder="उदा. सुरेश पाटील" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-saffron-500">
+                            </div>
+                            <!-- Mobile / WhatsApp -->
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="lblMobile">व्हॉट्सॲप / मोबाईल नंबर *</label>
+                                <input type="tel" required pattern="[0-9]{10}" placeholder="९८XXXXXXXX" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-saffron-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Ward 124 Area Selector -->
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="lblArea">परिसर / गल्ली (Ward 124 Area) *</label>
+                                <select required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-saffron-500">
+                                    <option value="" data-i18n="optSelectArea">-- परिसर निवडा --</option>
+                                    <option value="Parksite Sector 1">पार्कसाईट सेक्टर १</option>
+                                    <option value="Parksite Sector 2">पार्कसाईट सेक्टर २</option>
+                                    <option value="Parksite Sector 3">पार्कसाईट सेक्टर ३</option>
+                                    <option value="Parksite Sector 4">पार्कसाईट सेक्टर ४</option>
+                                    <option value="Hill No 1">हिल नंबर १ (Hill No. 1)</option>
+                                    <option value="Hill No 2">हिल नंबर २ (Hill No. 2)</option>
+                                    <option value="Hill No 3">हिल नंबर ३ (Hill No. 3)</option>
+                                    <option value="Varsha Nagar">वर्षा नगर</option>
+                                    <option value="Chirag Nagar">चिराग नगर</option>
+                                    <option value="Ambedkar Nagar">आंबेडकर नगर</option>
+                                    <option value="Municipal Colony">मुन्सिपल कॉलनी</option>
+                                </select>
+                            </div>
+
+                            <!-- Complaint Category -->
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="lblCategory">तक्रारीचा प्रकार *</label>
+                                <select required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-saffron-500">
+                                    <option value="" data-i18n="optSelectCategory">-- प्रकार निवडा --</option>
+                                    <option value="Water Supply">पाणी पुरवठा / गळती</option>
+                                    <option value="Drainage">गटार / ड्रेनेज लाईन तुंबणे</option>
+                                    <option value="Garbage">कचरा / स्वच्छता</option>
+                                    <option value="Streetlight">स्ट्रीटलाईट / बंद दिवे</option>
+                                    <option value="Roads">रस्ता / खड्डे / पायऱ्या</option>
+                                    <option value="Other">इतर समस्या</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="lblDesc">समस्येचे सविस्तर वर्णन *</label>
+                            <textarea required rows="3" placeholder="तुमच्या समस्येबद्दल सविस्तर माहिती लिहा..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-saffron-500"></textarea>
+                        </div>
+
+                        <!-- Photo Upload Simulation -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="lblPhoto">समस्येचा फोटो अपलोड करा (ऐच्छिक)</label>
+                            <div class="flex items-center gap-3">
+                                <label class="cursor-pointer px-4 py-2 bg-slate-900 hover:bg-slate-700 border border-slate-700 rounded-xl text-xs font-semibold text-slate-300 flex items-center gap-2 transition">
+                                    <i class="fa-solid fa-camera text-saffron-500"></i>
+                                    <span data-i18n="btnChoosePhoto">फोटो निवडा</span>
+                                    <input type="file" accept="image/*" class="hidden" onchange="previewUpload(event)">
+                                </label>
+                                <span id="fileNamePreview" class="text-xs text-slate-400 italic">कोणतीही फाईल निवडलेली नाही</span>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-saffron-600 to-amber-600 hover:from-saffron-500 hover:to-amber-500 text-slate-950 font-extrabold text-base shadow-lg shadow-saffron-500/20 transform active:scale-95 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span data-i18n="btnSubmitComplaint">तक्रार सबमिट करा</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Complaint Status Tracking Box (Col 5) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <!-- Tracking Box -->
+                    <div class="bg-slate-800/90 border border-slate-700/90 rounded-2xl p-6 shadow-xl">
+                        <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass-location text-saffron-500"></i>
+                            <span data-i18n="trackTitle">तक्रारीची स्थिती तपासा</span>
+                        </h3>
+                        <p class="text-xs text-slate-300 mb-4" data-i18n="trackDesc">तुमचा टिकेट आयडी टाकून कामाची सध्याची स्थिती पहा (उदा. VK124-2026-8492)</p>
+
+                        <div class="flex gap-2">
+                            <input type="text" id="trackInput" placeholder="VK124-XXXX" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-saffron-500 uppercase">
+                            <button onclick="trackComplaint()" class="px-4 py-2 bg-saffron-500 hover:bg-saffron-400 text-slate-950 font-bold rounded-xl text-xs transition">
+                                <span data-i18n="btnSearch">शोधा</span>
+                            </button>
+                        </div>
+
+                        <div id="trackResult" class="hidden mt-4 p-4 bg-slate-900 rounded-xl border border-slate-700 text-xs space-y-2">
+                            <!-- Dynamically updated -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Emergency Contacts -->
+                    <div class="bg-gradient-to-br from-saffron-950/40 to-slate-800 border border-saffron-500/30 rounded-2xl p-6 shadow-xl">
+                        <h4 class="font-bold text-saffron-400 text-sm mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <span data-i18n="emergencyTitle">तातडीचे वॉर्ड हेल्पलाइन नंबर</span>
+                        </h4>
+                        <div class="space-y-2 text-xs text-slate-300">
+                            <div class="flex justify-between border-b border-slate-700/60 pb-1.5">
+                                <span>नगरसेवक मध्यवर्ती कार्यालय:</span>
+                                <a href="tel:02225780000" class="font-bold text-white hover:text-saffron-400">022 2578 0000</a>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-700/60 pb-1.5">
+                                <span>पार्कसाईट पोलीस स्टेशन:</span>
+                                <a href="tel:02225781111" class="font-bold text-white hover:text-saffron-400">022 2578 1111</a>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-700/60 pb-1.5">
+                                <span>पाणी व ड्रेनेज आपत्कालीन:</span>
+                                <a href="tel:1916" class="font-bold text-white hover:text-saffron-400">1916 (BMC)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complaint Success Dialog Modal -->
+    <div id="ticketSuccessModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
+        <div class="bg-slate-800 border border-saffron-500 rounded-2xl max-w-md w-full p-6 text-center shadow-2xl">
+            <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl border border-emerald-500/40">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-xl font-extrabold text-white" data-i18n="ticketSuccessTitle">तक्रार यशस्वीरित्या नोंदवली!</h3>
+            <p class="text-xs text-slate-300 mt-1" data-i18n="ticketSuccessSub">तुमची तक्रार नगरसेवक इमरान शेख यांच्या कार्यालयाकडे प्राप्त झाली आहे.</p>
+
+            <div class="my-4 p-4 bg-slate-900 rounded-xl border border-dashed border-saffron-500/50 text-center">
+                <p class="text-[11px] text-slate-400" data-i18n="lblYourTicket">तुमचा टिकेट ट्रॅकिंग आयडी:</p>
+                <p id="generatedTicketId" class="text-2xl font-black text-saffron-400 tracking-wider my-1">VK124-2026-8492</p>
+                <p class="text-[10px] text-emerald-400"><i class="fa-solid fa-mobile-screen-button"></i> व्हॉट्सॲपवर एसएमएस पाठवला गेला आहे.</p>
+            </div>
+
+            <div class="flex gap-3">
+                <button onclick="copyTicketId()" class="flex-1 py-2.5 bg-slate-700 hover:bg-slate-600 text-white font-bold text-xs rounded-xl transition">
+                    <i class="fa-regular fa-copy"></i> <span data-i18n="btnCopyId">आयडी कॉपी करा</span>
+                </button>
+                <button onclick="closeTicketModal()" class="flex-1 py-2.5 bg-saffron-500 hover:bg-saffron-400 text-slate-950 font-bold text-xs rounded-xl transition">
+                    <span data-i18n="btnClose">बंद करा</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Office Staff Admin Portal Modal (For Nagarsevak's Internal Team) -->
+    <div id="adminPortalModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            <!-- Modal Header -->
+            <div class="p-4 bg-slate-800 border-b border-slate-700 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-user-shield text-saffron-500 text-xl"></i>
+                    <div>
+                        <h3 class="font-extrabold text-white text-base">कार्यालयीन कर्मचारी डॅशबोर्ड (Office Admin Portal)</h3>
+                        <p class="text-[11px] text-slate-400">नगरसेवक इमरान शेख - प्रभाग १२४ नियंत्रण कक्ष</p>
+                    </div>
+                </div>
+                <button onclick="toggleAdminModal()" class="w-8 h-8 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-200 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="p-6 overflow-y-auto space-y-6">
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="p-3 bg-slate-800 rounded-xl border border-slate-700 text-center">
+                        <p class="text-xs text-slate-400">एकूण तक्रारी</p>
+                        <p class="text-xl font-extrabold text-white">४२</p>
+                    </div>
+                    <div class="p-3 bg-slate-800 rounded-xl border border-slate-700 text-center">
+                        <p class="text-xs text-amber-400">प्रगतीपथावर</p>
+                        <p class="text-xl font-extrabold text-amber-400">०८</p>
+                    </div>
+                    <div class="p-3 bg-slate-800 rounded-xl border border-slate-700 text-center">
+                        <p class="text-xs text-emerald-400">सोडवलेल्या तक्रारी</p>
+                        <p class="text-xl font-extrabold text-emerald-400">३४</p>
+                    </div>
+                </div>
+
+                <!-- Complaints Admin Management Table -->
+                <div>
+                    <h4 class="font-bold text-sm text-white mb-3">नागरिकांच्या प्राप्त तक्रारी (Live Complaints Table)</h4>
+                    <div class="overflow-x-auto border border-slate-700 rounded-xl">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-800 text-slate-200 uppercase font-bold text-[10px]">
+                                <tr>
+                                    <th class="p-3">टिकेट आयडी</th>
+                                    <th class="p-3">नागरिक व मोबाईल</th>
+                                    <th class="p-3">परिसर</th>
+                                    <th class="p-3">विषय</th>
+                                    <th class="p-3">स्थिती (Status)</th>
+                                    <th class="p-3">कारवाई</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800 bg-slate-900/50" id="adminComplaintTable">
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-saffron-400">VK124-2026-8492</td>
+                                    <td class="p-3">सुरेश कदम<br><span class="text-slate-500">98201XXXXX</span></td>
+                                    <td class="p-3">पार्कसाईट सेक्टर १</td>
+                                    <td class="p-3">गटार तुंबले आहे</td>
+                                    <td class="p-3"><span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold border border-amber-500/30">In Progress</span></td>
+                                    <td class="p-3">
+                                        <button onclick="updateTicketStatus('VK124-2026-8492')" class="px-2.5 py-1 bg-saffron-500 hover:bg-saffron-400 text-slate-950 font-bold rounded">बदला</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-saffron-400">VK124-2026-7321</td>
+                                    <td class="p-3">अमित शिंदे<br><span class="text-slate-500">98210XXXXX</span></td>
+                                    <td class="p-3">हिल नंबर ३</td>
+                                    <td class="p-3">स्ट्रीटलाईट बंद</td>
+                                    <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">Resolved</span></td>
+                                    <td class="p-3">
+                                        <button class="px-2.5 py-1 bg-slate-700 text-slate-400 rounded cursor-not-allowed" disabled>पूर्ण</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact & Ward Office Section -->
+    <section id="contact" class="py-16 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Office Address & Details -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <h2 class="text-xs font-bold uppercase tracking-wider text-saffron-500" data-i18n="contactSub">थेट संपर्क</h2>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1" data-i18n="contactTitle">नगरसेवक जनसंपर्क कार्यालय</h3>
+                        <div class="w-12 h-1 bg-saffron-500 mt-2 rounded-full"></div>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-300">
+                        <div class="flex items-start gap-3 p-4 bg-slate-800/80 rounded-2xl border border-slate-700">
+                            <i class="fa-solid fa-location-dot text-saffron-500 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white" data-i18n="offAddrTitle">मध्यवर्ती कार्यालय पत्ता:</h4>
+                                <p class="text-xs text-slate-300 mt-0.5" data-i18n="offAddr">दुकान क्र. ४-५, पार्कसाईट मेन रोड, मशिदीजवळ, विक्रोळी (पश्चिम), मुंबई - ४०००७९.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 bg-slate-800/80 rounded-2xl border border-slate-700">
+                            <i class="fa-solid fa-clock text-saffron-500 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white" data-i18n="offHoursTitle">कार्यालयीन वेळ:</h4>
+                                <p class="text-xs text-slate-300 mt-0.5" data-i18n="offHours">सोमवार ते शनिवार: सकाळी ९:०० ते रात्री ९:०० (रविवार सुट्टी)</p>
+                            </div>
+                        </div>
+
+                        <!-- Social Media Handles -->
+                        <div class="pt-2">
+                            <p class="text-xs font-bold text-slate-400 mb-3" data-i18n="socialTitle">सोशल मीडियावर जोडा:</p>
+                            <div class="flex gap-3">
+                                <a href="#" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-200 hover:text-saffron-500 hover:border-saffron-500 transition">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-200 hover:text-saffron-500 hover:border-saffron-500 transition">
+                                    <i class="fa-brands fa-x-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-200 hover:text-saffron-500 hover:border-saffron-500 transition">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-200 hover:text-saffron-500 hover:border-saffron-500 transition">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Interactive Visual Simulation -->
+                <div class="lg:col-span-7">
+                    <div class="bg-slate-800 border border-slate-700 rounded-2xl p-2 h-80 sm:h-96 relative overflow-hidden shadow-2xl">
+                        <!-- Simulated Map Background -->
+                        <iframe class="w-full h-full rounded-xl filter contrast-125 grayscale-[20%]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.916892015886!2d72.92348507505298!3d19.11166698210344!2m3!1f0!0f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7c4273e0477%3A0xb3cfdbb1d83391b!2sPark%20Site%2C%20Vikhroli%20West%2C%20Mumbai%2C%20Maharashtra%20400079!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-8 text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <p class="font-bold text-slate-200">नगरसेवक इमरान शेख (प्रभाग १२४ - विक्रोळी पार्कसाईट)</p>
+                <p class="text-[11px] text-slate-500 mt-0.5">© 2026 सर्व हक्क सुरक्षित | सर्वांगीण विकास व जनता सेवा</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#home" class="hover:text-saffron-500">मुख्यपृष्ठ</a>
+                <a href="#grievance" class="hover:text-saffron-500">तक्रार नोंदवा</a>
+                <button onclick="toggleAdminModal()" class="text-saffron-400 font-semibold hover:underline">कर्मचारी लॉगिन</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Internationalization (I18n) Translations Store
+        const i18n = {
+            mr: {
+                headerTitle: "इमरान शेख",
+                headerSubtitle: "नगरसेवक - विक्रोळी पार्कसाईट",
+                navHome: "मुख्यपृष्ठ",
+                navAbout: "परिचय",
+                navWork: "विकास कामे",
+                navNews: "बातम्या व लेख",
+                navGrievance: "तक्रार निवारण",
+                navContact: "संपर्क",
+                adminPortalBtn: "कर्मचारी पोर्टल",
+                heroBadge: "आपला लोकप्रतिनिधी | प्रभाग क्र. १२४ विक्रोळी पार्कसाईट",
+                heroName: "नगरसेवक इमरान शेख",
+                heroSlogan: '"जनसेवा हीच आमची ईश्वरसेवा"',
+                heroDesc: "विक्रोळी पार्कसाईट क्षेत्राच्या सर्वांगीण विकासासाठी, उत्तम रस्ते, स्वच्छ पाणी, अत्याधुनिक गटारे व नागरिकांच्या तत्पर सेवेसाठी सदैव कटिबद्ध.",
+                btnFileComplaint: "ऑनलाइन तक्रार नोंदवा",
+                btnViewWork: "विकास कामे पहा",
+                btnContact: "संपर्क साधा",
+                cardRole: "नगरसेवक - प्रभाग १२४, महापालिका मुंबई",
+                cardArea: "पार्कसाईट, वर्षा नगर, चिराग नगर, पार्कसाईट सेक्टर १ ते ४",
+                statFunds: "विकास निधी मंजूर",
+                statProjects: "पूर्ण झालेले प्रकल्प",
+                statCitizens: "नागरिकांना मदत",
+                statHelp: "जनसंपर्क कार्यालय सेवा",
+                aboutSub: "नेत्याचा परिचय",
+                aboutTitle: "विक्रोळी पार्कसाईटच्या प्रगतीचा ध्यास",
+                aboutP1: "नगरसेवक इमरान शेख हे गेल्या अनेक वर्षांपासून विक्रोळी पार्कसाईट (प्रभाग १२४) मधील नागरिकांच्या मूलभूत प्रश्नांसाठी सातत्याने लढत आहेत. पाणीपुरवठा सुधारणे, नवीन सांडपाणी वाहिन्या टाकणे, रस्त्यांचे काँक्रिटीकरण आणि स्थानिक तरुणांच्या रोजगारासाठी त्यांनी मोठे योगदान दिले आहे.",
+                aboutP2: "प्रभाग १२४ च्या प्रत्येक गल्लीबोळात थेट जाऊन नागरिकांच्या समस्या ऐकणे आणि त्या पालिकेच्या अधिकार्‍यांच्या माध्यमातून त्वरित सोडवणे ही त्यांची कामाची पद्धत आहे.",
+                focus1Title: "स्वच्छ पाणी पुरवठा",
+                focus1Desc: "डोंगरभागात हाय-प्रेशर पाणी लाईन",
+                focus2Title: "पक्के रस्ते व पेव्हर ब्लॉक",
+                focus2Desc: "सर्व गल्ल्यांमध्ये अंतर्गत रस्ते",
+                focus3Title: "एलईडी स्ट्रीटलाईट्स",
+                focus3Desc: "महिला व नागरिकांच्या सुरक्षेसाठी प्रकाश",
+                focus4Title: "मोफत आरोग्य शिबिरे",
+                focus4Desc: "दरमहा वैद्यकीय व नेत्र तपासणी",
+                visionTitle: "आमचा जाहीरनामा व ध्येय",
+                vision1: "पार्कसाईट परिसरातील सर्व डोंगराळ भागात पायऱ्या व संरक्षक भिंतींची पुनर्बांधणी.",
+                vision2: "नवीन अभ्यासिका (Study Center) व तरुणांसाठी ई-लायब्ररीची उभारणी.",
+                vision3: "दररोज कचरा व्यवस्थापन आणि साचलेल्या नाल्यांची वेळेत स्वच्छता.",
+                vision4: "ज्येष्ठ नागरिक व महिलांसाठी विशेष कल्याणकारी योजना व आरोग्य कार्ड वितरण.",
+                workSub: "प्रत्यक्ष काम, खरी प्रगती",
+                workTitle: "प्रभाग १२४ मधील विकास कामे",
+                workDesc: "खालील फोटोवर स्लायडर फिरवून कामांमधील फरक (पूर्वी आणि नंतर) तपासा.",
+                filterAll: "सर्व कामे",
+                filterWater: "पाणी व सांडपाणी",
+                filterRoads: "रस्ते व गटारे",
+                filterSafety: "लाइट्स व सुरक्षा",
+                statusCompleted: "पूर्ण झाले (COMPLETED)",
+                proj1Title: "पार्कसाईट सेक्टर १ - नवीन पाणी लाईन व ड्रेनेज काम",
+                proj1Desc: "पार्कसाईट सेक्टर १ मधील जुनी गळती असणारी लाईन बदलून ९ इंच नवीन ड्रेनेज व पाणी लाईन यशस्वीरीत्या पूर्ण.",
+                proj2Title: "चिराग नगर - काँक्रिट रस्ता व पेव्हर ब्लॉक काम",
+                proj2Desc: "खराब झालेल्या रस्त्याची दुरुस्ती करून मजबूत काँक्रिटीकरण व पादचाऱ्यांसाठी पेव्हर ब्लॉक बसवले.",
+                labelBefore: "पूर्वी (BEFORE)",
+                labelAfter: "नंतर (AFTER)",
+                newsSub: "वृत्तपत्रे व माध्यमे",
+                newsTitle: "बातम्या, लेख व प्रसारमाध्यमे",
+                art1Title: "विक्रोळी पार्कसाईट येथे भव्य आरोग्य व मोफत नेत्र तपासणी शिबिर संपन्न",
+                art1Summary: "नगरसेवक इमरान शेख यांच्या पुढाकाराने १२०० हून अधिक नागरिकांनी मोफत वैद्यकीय शिबिराचा लाभ घेतला...",
+                art2Title: "पार्कसाईट Hill No. 3 मधील नवीन पाणी लाईन कामाचे लोकार्पण",
+                art2Summary: "गेल्या २० वर्षांपासूनचा पाण्याच्या दाबाचा प्रश्न नगरसेवक इमरान शेख यांच्या प्रयत्नाने सुटला...",
+                art3Title: "तरुणांसाठी भव्य रोजगार मेळावा व ई-लायब्ररी उपक्रम",
+                art3Summary: "प्रभाग १२४ मधील २५० हून अधिक स्थानिक तरुणांना विविध कंपन्यांमध्ये रोजगाराच्या संधी उपलब्ध...",
+                readMore: "पूर्ण बातमी वाचा",
+                grievanceTitle: "जनता तक्रार निवारण पोर्टल",
+                grievanceSub: "प्रभाग १२४ मधील तुमची कोणतीही समस्या थेट नगरसेवक कार्यालयाकडे नोंदवा. तुम्हाला एक युनिक ट्रॅकिंग आयडी मिळेल.",
+                formHeading: "नवीन तक्रार नोंदवा (Register Complaint)",
+                lblFullName: "पूर्ण नाव *",
+                lblMobile: "व्हॉट्सॲप / मोबाईल नंबर *",
+                lblArea: "परिसर / गल्ली (Ward 124 Area) *",
+                optSelectArea: "-- परिसर निवडा --",
+                lblCategory: "तक्रारीचा प्रकार *",
+                optSelectCategory: "-- प्रकार निवडा --",
+                lblDesc: "समस्येचे सविस्तर वर्णन *",
+                lblPhoto: "समस्येचा फोटो अपलोड करा (ऐच्छिक)",
+                btnChoosePhoto: "फोटो निवडा",
+                btnSubmitComplaint: "तक्रार सबमिट करा",
+                trackTitle: "तक्रारीची स्थिती तपासा",
+                trackDesc: "तुमचा टिकेट आयडी टाकून कामाची सध्याची स्थिती पहा (उदा. VK124-2026-8492)",
+                btnSearch: "शोधा",
+                emergencyTitle: "तातडीचे वॉर्ड हेल्पलाइन नंबर",
+                ticketSuccessTitle: "तक्रार यशस्वीरित्या नोंदवली!",
+                ticketSuccessSub: "तुमची तक्रार नगरसेवक इमरान शेख यांच्या कार्यालयाकडे प्राप्त झाली आहे.",
+                lblYourTicket: "तुमचा टिकेट ट्रॅकिंग आयडी:",
+                btnCopyId: "आयडी कॉपी करा",
+                btnClose: "बंद करा",
+                contactSub: "थेट संपर्क",
+                contactTitle: "नगरसेवक जनसंपर्क कार्यालय",
+                offAddrTitle: "मध्यवर्ती कार्यालय पत्ता:",
+                offAddr: "दुकान क्र. ४-५, पार्कसाईट मेन रोड, मशिदीजवळ, विक्रोळी (पश्चिम), मुंबई - ४०००७९.",
+                offHoursTitle: "कार्यालयीन वेळ:",
+                offHours: "सोमवार ते शनिवार: सकाळी ९:०० ते रात्री ९:०० (रविवार सुट्टी)",
+                socialTitle: "सोशल मीडियावर जोडा:"
+            },
+            en: {
+                headerTitle: "Imran Shaikh",
+                headerSubtitle: "Nagarsevak - Vikhroli Parksite",
+                navHome: "Home",
+                navAbout: "About",
+                navWork: "Development Works",
+                navNews: "News & Articles",
+                navGrievance: "Grievance Portal",
+                navContact: "Contact",
+                adminPortalBtn: "Staff Portal",
+                heroBadge: "Your Representative | Ward No. 124 Vikhroli Parksite",
+                heroName: "Nagarsevak Imran Shaikh",
+                heroSlogan: '"Dedicated Public Service is Our Mission"',
+                heroDesc: "Committed to overall development, clean water, concrete roads, modern drainage, and prompt citizen assistance in Ward 124 Vikhroli Parksite.",
+                btnFileComplaint: "File Online Complaint",
+                btnViewWork: "View Completed Works",
+                btnContact: "Contact Office",
+                cardRole: "Nagarsevak - Ward 124, Municipal Corporation Mumbai",
+                cardArea: "Parksite, Varsha Nagar, Chirag Nagar, Parksite Sector 1 to 4",
+                statFunds: "Development Funds Sanctioned",
+                statProjects: "Projects Completed",
+                statCitizens: "Citizens Assisted",
+                statHelp: "24/7 Helpline Support",
+                aboutSub: "Leader Profile",
+                aboutTitle: "Vision for Progress of Vikhroli Parksite",
+                aboutP1: "Nagarsevak Imran Shaikh has been dedicatedly serving residents of Ward 124 for years. He has spearheaded major infrastructure initiatives including high-pressure water supply pipelines, road concreting, drainage, and youth employment drives.",
+                aboutP2: "His signature approach is direct ground interaction—visiting every alley of Ward 124 to resolve citizen grievances with BMC officials swiftly.",
+                focus1Title: "Clean Water Supply",
+                focus1Desc: "High-pressure lines in hill areas",
+                focus2Title: "Concrete Roads & Paver Blocks",
+                focus2Desc: "Internal road concreting across ward",
+                focus3Title: "LED Streetlights",
+                focus3Desc: "Brighter lighting for public safety",
+                focus4Title: "Free Health Camps",
+                focus4Desc: "Monthly medical & eye checkups",
+                visionTitle: "Our Manifesto & Goals",
+                vision1: "Rebuilding staircases and retaining walls in hilly Parksite pockets.",
+                vision2: "Setting up modern Study Centers & E-Libraries for youth.",
+                vision3: "Daily garbage collection & timely cleaning of stormwater drains.",
+                vision4: "Special welfare schemes and health cards for senior citizens & women.",
+                workSub: "Real Action, True Progress",
+                workTitle: "Development Works in Ward 124",
+                workDesc: "Drag the photo slider left or right to inspect Before & After transformation.",
+                filterAll: "All Works",
+                filterWater: "Water & Drainage",
+                filterRoads: "Roads & Gutters",
+                filterSafety: "Lights & Safety",
+                statusCompleted: "COMPLETED",
+                proj1Title: "Parksite Sector 1 - New Water Line & Drainage Work",
+                proj1Desc: "Successfully replaced old leaking pipeline with new 9-inch underground drainage and high-pressure water network.",
+                proj2Title: "Chirag Nagar - Concrete Road & Paver Block Work",
+                proj2Desc: "Repaired damaged road with reinforced concreting and built walkable paver block pathways.",
+                labelBefore: "BEFORE",
+                labelAfter: "AFTER",
+                newsSub: "Press & Media",
+                newsTitle: "News Articles & Press Coverage",
+                art1Title: "Grand Free Health & Eye Checkup Camp Held at Vikhroli Parksite",
+                art1Summary: "Over 1,200 citizens benefitted from free medical consultations arranged by Nagarsevak Imran Shaikh...",
+                art2Title: "Inauguration of New Water Supply Line at Parksite Hill No. 3",
+                art2Summary: "A 20-year long water pressure issue was resolved through Nagarsevak Imran Shaikh's persistent efforts...",
+                art3Title: "Youth Employment Drive & E-Library Initiative Launched",
+                art3Summary: "Over 250 local youth from Ward 124 secured job offers during the mega employment drive...",
+                readMore: "Read Full Article",
+                grievanceTitle: "Public Grievance Redressal Portal",
+                grievanceSub: "Submit any civic complaint directly to Nagarsevak's office and get an instant unique tracking ticket ID.",
+                formHeading: "Register New Complaint",
+                lblFullName: "Full Name *",
+                lblMobile: "WhatsApp / Mobile No. *",
+                lblArea: "Area / Pocket (Ward 124) *",
+                optSelectArea: "-- Select Area --",
+                lblCategory: "Complaint Category *",
+                optSelectCategory: "-- Select Category --",
+                lblDesc: "Detailed Description *",
+                lblPhoto: "Upload Issue Photo (Optional)",
+                btnChoosePhoto: "Choose File",
+                btnSubmitComplaint: "Submit Complaint",
+                trackTitle: "Track Complaint Status",
+                trackDesc: "Enter your Ticket ID to view live progress (e.g. VK124-2026-8492)",
+                btnSearch: "Search",
+                emergencyTitle: "Emergency Ward Helplines",
+                ticketSuccessTitle: "Complaint Registered Successfully!",
+                ticketSuccessSub: "Your grievance has been received by Nagarsevak Imran Shaikh's office.",
+                lblYourTicket: "Your Ticket Tracking ID:",
+                btnCopyId: "Copy Ticket ID",
+                btnClose: "Close",
+                contactSub: "Direct Contact",
+                contactTitle: "Nagarsevak Central Ward Office",
+                offAddrTitle: "Central Office Address:",
+                offAddr: "Shop No. 4-5, Parksite Main Road, Near Masjid, Vikhroli (West), Mumbai - 400079.",
+                offHoursTitle: "Office Timings:",
+                offHours: "Monday to Saturday: 9:00 AM to 9:00 PM (Sunday Closed)",
+                socialTitle: "Connect on Social Media:"
+            }
+        };
+
+        // State Variables
+        let currentLang = 'mr';
+
+        // Initialize Language Selection Gate
+        function selectInitialLanguage(lang) {
+            currentLang = lang;
+            updateLanguageUI();
+            document.getElementById('languageGateModal').classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                document.getElementById('languageGateModal').style.display = 'none';
+            }, 300);
+        }
+
+        // Toggle Language Header Button
+        function toggleLanguage() {
+            currentLang = currentLang === 'mr' ? 'en' : 'mr';
+            updateLanguageUI();
+        }
+
+        // Update Text Across All Data Attributes
+        function updateLanguageUI() {
+            document.getElementById('currentLangLabel').textContent = currentLang === 'mr' ? 'मराठी' : 'English';
+            
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[currentLang] && i18n[currentLang][key]) {
+                    el.textContent = i18n[currentLang][key];
+                }
+            });
+        }
+
+        // Theme Switcher Logic
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+            }
+        }
+
+        // Mobile Navigation Drawer Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Initialize Interactive Before & After Slider Logic
+        function initBeforeAfterSliders() {
+            const sliders = document.querySelectorAll('.before-after-container');
+            sliders.forEach(slider => {
+                const beforeImage = slider.querySelector('.before-image');
+                const handle = slider.querySelector('.slider-handle');
+                let isDragging = false;
+
+                function setPosition(x) {
+                    const rect = slider.getBoundingClientRect();
+                    let position = ((x - rect.left) / rect.width) * 100;
+                    if (position < 0) position = 0;
+                    if (position > 100) position = 100;
+
+                    beforeImage.style.width = `${position}%`;
+                    handle.style.left = `${position}%`;
+                }
+
+                slider.addEventListener('mousedown', (e) => { isDragging = true; setPosition(e.clientX); });
+                window.addEventListener('mouseup', () => { isDragging = false; });
+                window.addEventListener('mousemove', (e) => { if (isDragging) setPosition(e.clientX); });
+
+                // Touch support
+                slider.addEventListener('touchstart', (e) => { isDragging = true; setPosition(e.touches[0].clientX); });
+                window.addEventListener('touchend', () => { isDragging = false; });
+                window.addEventListener('touchmove', (e) => { if (isDragging) setPosition(e.touches[0].clientX); });
+            });
+        }
+
+        // Filter Works Portfolio
+        function filterWork(category) {
+            const buttons = document.querySelectorAll('.work-tab');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-saffron-500', 'text-slate-950');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+            event.target.classList.remove('bg-slate-800', 'text-slate-300');
+            event.target.classList.add('bg-saffron-500', 'text-slate-950');
+
+            const cards = document.querySelectorAll('.work-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Article Pop-up Modal Reader Logic
+        const articleData = {
+            1: {
+                titleMr: "विक्रोळी पार्कसाईट येथे भव्य आरोग्य व मोफत नेत्र तपासणी शिबिर संपन्न",
+                titleEn: "Grand Free Health & Eye Checkup Camp Held at Vikhroli Parksite",
+                paper: "लोकमत वृत्त पत्र",
+                date: "१२ मे २०२६",
+                img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+                contentMr: "नगरसेवक इमरान शेख यांच्या पुढाकाराने विक्रोळी पार्कसाईट सेक्टर १ मधील महापालिका शाळेत भव्य मोफत आरोग्य, हृदयरोग व नेत्र तपासणी शिबिराचे आयोजन करण्यात आले होते. या शिबिरात नामांकित डॉक्टरांच्या टीमने तब्बल १२५० हून अधिक नागरिकांची तपासणी केली. गरजू रुग्णांना मोफत चष्मे व औषधांचे वाटप करण्यात आले.",
+                contentEn: "Under the leadership of Nagarsevak Imran Shaikh, a grand medical and eye checkup camp was organized at BMC School, Parksite Sector 1. Over 1,250 citizens received free consultations from specialized medical practitioners, alongside distribution of free spectacles and medicines."
+            },
+            2: {
+                titleMr: "पार्कसाईट Hill No. 3 मधील नवीन पाणी लाईन कामाचे लोकार्पण",
+                titleEn: "Inauguration of New Water Supply Line at Parksite Hill No. 3",
+                paper: "महाराष्ट्र टाईम्स",
+                date: "०४ एप्रिल २०२६",
+                img: "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80",
+                contentMr: "डोंगरभागात असणाऱ्या पार्कसाईट हिल नंबर ३ परिसरातील नागरिकांना कमी दाबाने पाणी मिळण्याची जुनी अडचण होती. नगरसेवक इमरान शेख यांनी महापालिकेकडून विशेष ५० लाखांचा निधी मंजूर करून नवीन ९ इंच हाय-प्रेशर पाणी लाईनचे काम पूर्ण करून घेतले.",
+                contentEn: "Residents of Parksite Hill No. 3 faced low water pressure issues for years. Nagarsevak Imran Shaikh secured a dedicated ₹50 Lakh budget sanction from BMC to install a new 9-inch high-pressure water pipeline."
+            },
+            3: {
+                titleMr: "तरुणांसाठी भव्य रोजगार मेळावा व ई-लायब्ररी उपक्रम",
+                titleEn: "Youth Employment Drive & E-Library Initiative Launched",
+                paper: "सकाळ वृत्त",
+                date: "१८ मार्च २०२६",
+                img: "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?auto=format&fit=crop&w=800&q=80",
+                contentMr: "स्थानिक सुशिक्षित तरुणांना रोजगाराच्या संधी मिळाव्यात यासाठी नगरसेवक इमरान शेख यांच्या संकल्पनेतून विक्रोळी पार्कसाईटमध्ये रोजगार मेळावा घेण्यात आला. ३० हून अधिक नामांकित कंपन्यांनी भाग घेऊन २५० पेक्षा जास्त स्थानिक तरुण-तरुणींना थेट नियुक्ती पत्रे दिली.",
+                contentEn: "To empower local educated youth, Nagarsevak Imran Shaikh organized a massive Job Fair in Vikhroli Parksite. Over 30 reputed companies participated, granting spot appointment letters to more than 250 local candidates."
+            }
+        };
+
+        function openArticleModal(id) {
+            const data = articleData[id];
+            const isMr = currentLang === 'mr';
+            const contentContainer = document.getElementById('articleModalContent');
+
+            contentContainer.innerHTML = `
+                <div class="space-y-4">
+                    <span class="px-2.5 py-1 bg-saffron-500/20 text-saffron-400 font-bold text-xs rounded border border-saffron-500/30">${data.paper}</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-white">${isMr ? data.titleMr : data.titleEn}</h2>
+                    <p class="text-xs text-slate-400"><i class="fa-regular fa-calendar-days mr-1"></i> ${data.date}</p>
+                    <img src="${data.img}" class="w-full h-60 sm:h-72 object-cover rounded-xl my-3">
+                    <p class="text-sm text-slate-200 leading-relaxed">${isMr ? data.contentMr : data.contentEn}</p>
+                    <div class="pt-4 border-t border-slate-700 flex justify-between items-center text-xs">
+                        <span class="text-slate-400">शेअर करा:</span>
+                        <div class="flex gap-2">
+                            <button onclick="alert('Link copied!')" class="px-3 py-1.5 bg-slate-700 text-white rounded-lg hover:bg-slate-600"><i class="fa-solid fa-share-nodes"></i> Share Article</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('articleModal').classList.remove('hidden');
+        }
+
+        function closeArticleModal() {
+            document.getElementById('articleModal').classList.add('hidden');
+        }
+
+        // Preview File Name Simulation
+        function previewUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById('fileNamePreview').textContent = file.name;
+            }
+        }
+
+        // Handle Complaint Submission & Ticket Generation
+        function handleComplaintSubmit(event) {
+            event.preventDefault();
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const ticketId = `VK124-2026-${randomNum}`;
+
+            document.getElementById('generatedTicketId').textContent = ticketId;
+            document.getElementById('ticketSuccessModal').classList.remove('hidden');
+            document.getElementById('grievanceForm').reset();
+            document.getElementById('fileNamePreview').textContent = 'कोणतीही फाईल निवडलेली नाही';
+        }
+
+        function closeTicketModal() {
+            document.getElementById('ticketSuccessModal').classList.add('hidden');
+        }
+
+        function copyTicketId() {
+            const id = document.getElementById('generatedTicketId').textContent;
+            navigator.clipboard ? navigator.clipboard.writeText(id) : document.execCommand('copy');
+            alert(currentLang === 'mr' ? 'टिकेट आयडी कॉपी केला!' : 'Ticket ID copied to clipboard!');
+        }
+
+        // Track Complaint Live Status
+        function trackComplaint() {
+            const val = document.getElementById('trackInput').value.trim().toUpperCase();
+            const resultBox = document.getElementById('trackResult');
+
+            if (!val) {
+                alert(currentLang === 'mr' ? 'कृपया टिकेट आयडी टाका.' : 'Please enter a Ticket ID.');
+                return;
+            }
+
+            resultBox.classList.remove('hidden');
+            resultBox.innerHTML = `
+                <div class="space-y-1.5">
+                    <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+                        <span class="font-mono font-bold text-saffron-400">${val}</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] bg-amber-500/20 text-amber-400 font-bold border border-amber-500/30">In Progress (प्रगतीपथावर)</span>
+                    </div>
+                    <p class="text-slate-300 font-semibold">विषय: ड्रेनेज लाईन दुरुस्ती काम</p>
+                    <p class="text-slate-400 text-[11px]">परिसर: पार्कसाईट सेक्टर १</p>
+                    <p class="text-slate-400 text-[11px]">अपडेट: पालिकेच्या कर्मचाऱ्यांना प्रत्यक्ष पाहणीसाठी पाठवले आहे.</p>
+                </div>
+            `;
+        }
+
+        // Office Staff Admin Modal Logic
+        function toggleAdminModal() {
+            const modal = document.getElementById('adminPortalModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function updateTicketStatus(id) {
+            alert(`Ticket ${id} status updated to Resolved!`);
+        }
+
+        // On Page Load Initialization
+        window.onload = function() {
+            initBeforeAfterSliders();
+        }
+    </script>
+</body>
+</html>
